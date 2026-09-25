@@ -27,13 +27,22 @@ app.add_middleware(
 
 # --- 1. Definición del Esquema JSON con Pydantic ---
 class EspecieItem(BaseModel):
-    nombre_comun: str = Field(description="Nombre local o común tal como aparece en la base de datos")
+    nombre_comun: str = Field(description="Nombre(s) local(es) o común(es) tal como aparece(n) en la base de datos (puede incluir varios separados por coma)")
+    nombres_comunes_lista: list[str] = Field(description="Lista de cada nombre común por separado. Si hay varios separados por comas, cada uno es un elemento. Ej: ['aguano', 'caoba'] o ['cedro rojo']")
     especie: str = Field(description="Nombre científico completo tal como aparece en la base de datos")
-    especie_deletreada: str = Field(description="Nombre científico con cada letra separada por coma y espacio ', '. Si hay espacios entre palabras incluye la palabra 'espacio'. Ej: S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a")
+    especie_deletreada: str = Field(description="Nombre científico deletreado letra por letra con ', ' entre letras. Usa 'espacio' entre palabras SOLO si el nombre tiene 3 o más palabras. Ej (3 palabras): 'S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a, espacio, K, i, n, g'. Ej (1 palabra): 'M, E, L, I, A, C, E, A, E'")
     familia: str = Field(description="Familia botánica tal como aparece en la base de datos")
-    familia_deletreada: str = Field(description="Nombre de la familia con cada letra separada por coma y espacio ', '. Si hay espacios entre palabras incluye la palabra 'espacio'. Ej: M, E, L, I, A, C, E, A, E")
-    campo_a_completar: str = Field(description="Nombre del campo que estaba en blanco o sin completar en el examen/ficha de la imagen. Valores posibles: 'nombre_comun', 'especie', 'familia'. Si todos estaban completos, pon 'ninguno'.")
-    campo_a_completar_deletreado: str = Field(description="El valor del campo que faltaba completar, deletreado letra por letra separado por coma y espacio ', '. Si hay espacios entre palabras incluye la palabra 'espacio'. Si campo_a_completar es 'ninguno', pon cadena vacía.")
+    familia_deletreada: str = Field(description="Familia deletreada letra por letra con ', ' entre letras. Usa 'espacio' entre palabras SOLO si la familia tiene 3 o más palabras.")
+    campo_a_completar: str = Field(description="Campo que estaba en blanco en el examen/ficha. Valores: 'nombre_comun', 'especie', 'familia', o 'ninguno'.")
+    campo_a_completar_deletreado: str = Field(description=(
+        "Deletreo del valor del campo que faltaba completar. "
+        "REGLAS DE DELETREO: separa letras con ', '. Usa la palabra 'espacio' entre palabras SOLO si ese nombre tiene 3 o más palabras. "
+        "Si campo_a_completar='nombre_comun' y hay varios nombres, deletrea cada nombre por separado y sepáralos con ' | '. "
+        "Ej nombre_comun con 2 nombres de 1 palabra: 'a, g, u, a, n, o | c, a, o, b, a'. "
+        "Ej nombre_comun con 1 nombre de 3 palabras: 'p, a, l, o, espacio, d, e, espacio, r, o, s, a'. "
+        "Ej especie (3 palabras): 'S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a, espacio, K, i, n, g'. "
+        "Si campo_a_completar='ninguno', pon cadena vacía."
+    ))
 
 class RespuestaAnalisis(BaseModel):
     resultados: list[EspecieItem] = Field(description="Lista de todas las especies identificadas en la imagen")
@@ -68,15 +77,28 @@ REGLAS DE ORO:
 2. Identifica TODAS las especies presentes en la imagen (pueden ser 1, 2, 5 o más). Incluye cada una en la lista de resultados.
 3. Para cada especie detectada, busca la coincidencia correspondiente en la BASE DE DATOS DE REFERENCIA.
 4. Extrae los valores EXACTOS de 'Nombre local', 'Especie' y 'Familia'. Respeta al 100% la ortografía, mayúsculas, minúsculas, puntos, comas, paréntesis y acentos según figuran en la base de datos.
-5. Para los campos `especie_deletreada` y `familia_deletreada`, separa cada letra con una coma y espacio ', '. Si hay espacios entre palabras, incluye literalmente la palabra 'espacio'. Ejemplos:
-   - "Swietenia macrophylla King" -> "S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a, espacio, K, i, n, g"
-   - "MELIACEAE" -> "M, E, L, I, A, C, E, A, E"
-6. DETECTA QUÉ CAMPO ESTABA EN BLANCO en el examen o ficha de la imagen:
-   - Si el campo de "Nombre común" o "Nombre local" estaba vacío/en blanco para completar, pon `campo_a_completar = "nombre_comun"`.
-   - Si el campo de "Especie" o "Nombre científico" estaba vacío/en blanco, pon `campo_a_completar = "especie"`.
-   - Si el campo de "Familia" estaba vacío/en blanco, pon `campo_a_completar = "familia"`.
-   - Si no había ningún campo en blanco, pon `campo_a_completar = "ninguno"`.
-7. En `campo_a_completar_deletreado`: pon el VALOR del campo que faltaba completar, deletreado letra por letra igual que en la regla 5. Si campo_a_completar es "ninguno", pon cadena vacía "".
+5. En `nombres_comunes_lista`: si el nombre común tiene varios nombres separados por coma (ej: "aguano, caoba"), pon cada uno como elemento separado: ["aguano", "caoba"]. Si es uno solo, pon solo ese elemento: ["cedro rojo"].
+6. REGLA DE DELETREO (aplica a especie_deletreada, familia_deletreada y campo_a_completar_deletreado):
+   - Separa cada letra con coma y espacio: ', '
+   - Usa la palabra 'espacio' entre palabras SOLAMENTE si ese nombre/valor tiene 3 O MÁS palabras.
+   - Si tiene 1 o 2 palabras: NO uses 'espacio', deletrea todas las letras seguidas (separadas por comas).
+   - Ejemplos:
+     * "aguano" (1 palabra) → "a, g, u, a, n, o"
+     * "caoba" (1 palabra) → "c, a, o, b, a"
+     * "MELIACEAE" (1 palabra) → "M, E, L, I, A, C, E, A, E"
+     * "Cedrus libani" (2 palabras) → "C, e, d, r, u, s, l, i, b, a, n, i"  ← SIN espacio
+     * "Swietenia macrophylla King" (3 palabras) → "S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a, espacio, K, i, n, g"
+     * "palo de rosa" (3 palabras) → "p, a, l, o, espacio, d, e, espacio, r, o, s, a"
+7. DETECTA QUÉ CAMPO ESTABA EN BLANCO en el examen o ficha:
+   - Nombre común vacío → campo_a_completar = "nombre_comun"
+   - Especie/nombre científico vacío → campo_a_completar = "especie"
+   - Familia vacía → campo_a_completar = "familia"
+   - Ninguno vacío → campo_a_completar = "ninguno"
+8. En `campo_a_completar_deletreado`:
+   - Si es "nombre_comun" con varios nombres: deletrea cada nombre por separado aplicando la regla 6, y sepáralos con ' | ' (pipe con espacios).
+     Ej "aguano, caoba": "a, g, u, a, n, o | c, a, o, b, a"
+   - Si es "especie" o "familia": aplica directamente la regla 6 al valor completo.
+   - Si es "ninguno": pon cadena vacía "".
 
 BASE DE DATOS DE REFERENCIA:
 {BASE_DATOS_ESPECIES}
