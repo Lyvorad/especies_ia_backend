@@ -92,20 +92,37 @@ async def analizar_examen(file: UploadFile = File(...)):
         contents = await file.read()
         imagen = Image.open(io.BytesIO(contents))
 
-        # Petición a Gemini usando Pydantic para Structured Output
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=[
-                imagen,
-                PROMPT_SISTEMA,
-                "Analiza la imagen enviada y responde completando los datos estrictos de la base de datos."
-            ],
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                response_schema=RespuestaAnalisis,
-                temperature=0.0  # Temperatura 0 para asegurar cero alucinación y máxima precisión ortográfica
-            )
-        )
+        # Petición a Gemini probando modelos recientes con fallback
+        model_candidates = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
+        response = None
+        last_exception = None
+
+        for model_name in model_candidates:
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=[
+                        imagen,
+                        PROMPT_SISTEMA,
+                        "Analiza la imagen enviada y responde completando los datos estrictos de la base de datos."
+                    ],
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json",
+                        response_schema=RespuestaAnalisis,
+                        temperature=0.0  # Temperatura 0 para asegurar cero alucinación
+                    )
+                )
+                if response and response.parsed:
+                    break
+            except Exception as err:
+                print(f"Intento fallido con modelo {model_name}: {err}")
+                last_exception = err
+
+        if not response or not response.parsed:
+            if last_exception:
+                raise last_exception
+            else:
+                raise Exception("No se pudo obtener respuesta válida de Gemini.")
 
         # Retornar el JSON validado directamente
         return response.parsed
