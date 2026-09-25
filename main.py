@@ -66,9 +66,9 @@ REGLAS DE ORO:
 2. Identifica TODAS las especies presentes en la imagen (pueden ser 1, 2, 5 o más). Incluye cada una en la lista de resultados.
 3. Para cada especie detectada, busca la coincidencia correspondiente en la BASE DE DATOS DE REFERENCIA.
 4. Extrae los valores EXACTOS de 'Nombre local', 'Especie' y 'Familia'. Respeta al 100% la ortografía, mayúsculas, minúsculas, puntos, comas, paréntesis y acentos según figuran en la base de datos.
-5. Para los campos `especie_deletreada` y `familia_deletreada`, toma el texto extraído y separa absolutamente CADA LETRA con un guion corto '-'. Las palabras dentro del texto se separan con espacio. Ejemplos:
-   - "Swietenia macrophylla King" -> "S-w-i-e-t-e-n-i-a m-a-c-r-o-p-h-y-l-l-a K-i-n-g"
-   - "MELIACEAE" -> "M-E-L-I-A-C-E-A-E"
+5. Para los campos `especie_deletreada` y `familia_deletreada`, separa cada letra con una coma y espacio ', '. Si hay espacios entre palabras, incluye literalmente la palabra 'espacio'. Ejemplos:
+   - "Swietenia macrophylla King" -> "S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a, espacio, K, i, n, g"
+   - "MELIACEAE" -> "M, E, L, I, A, C, E, A, E"
 
 BASE DE DATOS DE REFERENCIA:
 {BASE_DATOS_ESPECIES}
