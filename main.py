@@ -29,9 +29,11 @@ app.add_middleware(
 class EspecieItem(BaseModel):
     nombre_comun: str = Field(description="Nombre local o común tal como aparece en la base de datos")
     especie: str = Field(description="Nombre científico completo tal como aparece en la base de datos")
-    especie_deletreada: str = Field(description="Nombre científico con cada letra separada por guiones para lectura TTS, ej: S-w-i-e-t-e-n-i-a")
+    especie_deletreada: str = Field(description="Nombre científico con cada letra separada por coma y espacio ', '. Si hay espacios entre palabras incluye la palabra 'espacio'. Ej: S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a")
     familia: str = Field(description="Familia botánica tal como aparece en la base de datos")
-    familia_deletreada: str = Field(description="Nombre de la familia con cada letra separada por guiones, ej: M-E-L-I-A-C-E-A-E")
+    familia_deletreada: str = Field(description="Nombre de la familia con cada letra separada por coma y espacio ', '. Si hay espacios entre palabras incluye la palabra 'espacio'. Ej: M, E, L, I, A, C, E, A, E")
+    campo_a_completar: str = Field(description="Nombre del campo que estaba en blanco o sin completar en el examen/ficha de la imagen. Valores posibles: 'nombre_comun', 'especie', 'familia'. Si todos estaban completos, pon 'ninguno'.")
+    campo_a_completar_deletreado: str = Field(description="El valor del campo que faltaba completar, deletreado letra por letra separado por coma y espacio ', '. Si hay espacios entre palabras incluye la palabra 'espacio'. Si campo_a_completar es 'ninguno', pon cadena vacía.")
 
 class RespuestaAnalisis(BaseModel):
     resultados: list[EspecieItem] = Field(description="Lista de todas las especies identificadas en la imagen")
@@ -69,10 +71,17 @@ REGLAS DE ORO:
 5. Para los campos `especie_deletreada` y `familia_deletreada`, separa cada letra con una coma y espacio ', '. Si hay espacios entre palabras, incluye literalmente la palabra 'espacio'. Ejemplos:
    - "Swietenia macrophylla King" -> "S, w, i, e, t, e, n, i, a, espacio, m, a, c, r, o, p, h, y, l, l, a, espacio, K, i, n, g"
    - "MELIACEAE" -> "M, E, L, I, A, C, E, A, E"
+6. DETECTA QUÉ CAMPO ESTABA EN BLANCO en el examen o ficha de la imagen:
+   - Si el campo de "Nombre común" o "Nombre local" estaba vacío/en blanco para completar, pon `campo_a_completar = "nombre_comun"`.
+   - Si el campo de "Especie" o "Nombre científico" estaba vacío/en blanco, pon `campo_a_completar = "especie"`.
+   - Si el campo de "Familia" estaba vacío/en blanco, pon `campo_a_completar = "familia"`.
+   - Si no había ningún campo en blanco, pon `campo_a_completar = "ninguno"`.
+7. En `campo_a_completar_deletreado`: pon el VALOR del campo que faltaba completar, deletreado letra por letra igual que en la regla 5. Si campo_a_completar es "ninguno", pon cadena vacía "".
 
 BASE DE DATOS DE REFERENCIA:
 {BASE_DATOS_ESPECIES}
 """
+
 
 
 # --- 5. Endpoints de la API ---
