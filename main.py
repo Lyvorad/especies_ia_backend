@@ -92,8 +92,8 @@ async def analizar_examen(file: UploadFile = File(...)):
         contents = await file.read()
         imagen = Image.open(io.BytesIO(contents))
 
-        # Petición a Gemini probando modelos vigentes con fallback
-        model_candidates = ['gemini-flash-latest', 'gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-2.5-pro']
+        # Petición a Gemini probando modelos 3.x vigentes con fallback
+        model_candidates = ['gemini-3.6-flash', 'gemini-3.1-flash-lite', 'gemini-flash-lite-latest', 'gemini-3.5-flash-lite']
         response = None
         last_exception = None
 
