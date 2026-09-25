@@ -1,0 +1,74 @@
+Nombre local: abarco / Especie: Cariniana pyriformis Miers / Familia: LECYTHIDACEAE
+Nombre local: aceituno / Especie: Simarouba amara Aubl. / Familia: SIMAROUBACEAE
+Nombre local: achihua / Especie: Guarea grandifolia C. DC. / Familia: MELIACEAE
+Nombre local: aguano, caoba / Especie: Swietenia macrophylla King / Familia: MELIACEAE
+Nombre local: ahuihua / Especie: Guarea macrophylla Vahl / Familia: MELIACEAE
+Nombre local: aliso / Especie: Alnus acuminata Kunth / Familia: BETULACEAE
+Nombre local: almendro / Especie: Caryocar microcarpum Duc / Familia: CARYOCARACEAE
+Nombre local: anacaspi / Especie: Apuleia leiocarpa (Vogel) J.F. Macbr. / Familia: FABACEAE
+Nombre local: andiroba, carapa / Especie: Carapa guianensis Aubl. / Familia: MELIACEAE
+Nombre local: ana caspi / Especie: Apuleia molaris Spruce ex Benth. / Familia: FABACEAE
+Nombre local: bolaina blanca / Especie: Guazuma crinita Mart. / Familia: MALVACEAE
+Nombre local: bolaina negra / Especie: Guazuma ulmifolia Lam. / Familia: MALVACEAE
+Nombre local: capirona, capirona negra, capirona del bajo / Especie: Calycophyllum spruceanum (Benth.) Hook. f. ex K. Schum. / Familia: RUBIACEAE
+Nombre local: capirona de altura / Especie: Capirona decorticans Spruce / Familia: RUBIACEAE
+Nombre local: catahua / Especie: Hura crepitans L. / Familia: EUPHORBIACEAE
+Nombre local: cedro / Especie: Cedrela odorata L. / Familia: MELIACEAE
+Nombre local: cedro blanco / Especie: Cedrela angustifolia Sesé & Moc. ex DC. / Familia: MELIACEAE
+Nombre local: cedro de altura / Especie: Cedrela montana Moritz ex Turcz. / Familia: MELIACEAE
+Nombre local: cedro fiambres / Especie: Cedrela fissilis Vell. / Familia: MELIACEAE
+Nombre local: cedarana, cedrorana / Especie: Cedrelinga cateniformis (Ducke) Ducke / Familia: FABACEAE
+Nombre local: ceibo / Especie: Ceiba samauma (Mart.) K. Schum. / Familia: MALVACEAE
+Nombre local: copaiba / Especie: Copaifera officinalis (L.) L. / Familia: FABACEAE
+Nombre local: copaiba reticulata / Especie: Copaifera reticulata Ducke / Familia: FABACEAE
+Nombre local: cumala, cumala blanca / Especie: Virola sebifera Aubl. / Familia: MYRISTICACEAE
+Nombre local: cumala roja / Especie: Virola calophylla (Spruce) Warb. / Familia: MYRISTICACEAE
+Nombre local: cumala colorada / Especie: Iryanthera laevis Markgr. / Familia: MYRISTICACEAE
+Nombre local: cumaceba / Especie: Swartzia polyphylla DC. / Familia: FABACEAE
+Nombre local: guaraná / Especie: Paullinia cupana Kunth / Familia: SAPINDACEAE
+Nombre local: huacapú / Especie: Minquartia guianensis Aubl. / Familia: OLACACEAE
+Nombre local: huairuro / Especie: Ormosia coccinea (Aubl.) Jackson / Familia: FABACEAE
+Nombre local: huairuro hembra / Especie: Ormosia amazonica Ducke / Familia: FABACEAE
+Nombre local: huasai / Especie: Euterpe precatoria Mart. / Familia: ARECACEAE
+Nombre local: ibapoy / Especie: Ficus insipida Willd. / Familia: MORACEAE
+Nombre local: itauba / Especie: Mezilaurus itauba (Meisn.) Taub. ex Mez / Familia: LAURACEAE
+Nombre local: jacaranda / Especie: Jacaranda copaia (Aubl.) D. Don / Familia: BIGNONIACEAE
+Nombre local: lupuna, lupuna blanca / Especie: Ceiba pentandra (L.) Gaertn. / Familia: MALVACEAE
+Nombre local: lupuna colorada / Especie: Cavanillesia umbellata Ruiz & Pav. / Familia: MALVACEAE
+Nombre local: marupa / Especie: Simarouba amara Aubl. / Familia: SIMAROUBACEAE
+Nombre local: mashonaste / Especie: Clarisia racemosa Ruiz & Pav. / Familia: MORACEAE
+Nombre local: moena, moena amarilla / Especie: Aniba rosaeodora Ducke / Familia: LAURACEAE
+Nombre local: moena alcanforada / Especie: Ocotea costulata (Nees) Mez / Familia: LAURACEAE
+Nombre local: moena negra / Especie: Ocotea quixos (Lam.) Kosterm. / Familia: LAURACEAE
+Nombre local: moena rosada / Especie: Aniba amazonica (Meisn.) Mez / Familia: LAURACEAE
+Nombre local: morado, palo morado / Especie: Peltogyne paniculata Benth. / Familia: FABACEAE
+Nombre local: ojé / Especie: Ficus insipida Willd. / Familia: MORACEAE
+Nombre local: panguana / Especie: Brosimum utile (Kunth) Oken / Familia: MORACEAE
+Nombre local: pasallo / Especie: Eriotheca ruizii (K. Schum.) A. Robyns / Familia: MALVACEAE
+Nombre local: palo de rosa / Especie: Aniba rosaeodora Ducke / Familia: LAURACEAE
+Nombre local: palo santo / Especie: Bursera graveolens (Kunth) Triana & Planch. / Familia: BURSERACEAE
+Nombre local: pumaquiro / Especie: Aspidosperma macrocarpon Mart. / Familia: APOCYNACEAE
+Nombre local: quinilla, quinilla colorada / Especie: Manilkara bidentata (A. DC.) A. Chev. / Familia: SAPOTACEAE
+Nombre local: quinilla blanca / Especie: Pouteria reticulata (Engler) Eyma / Familia: SAPOTACEAE
+Nombre local: requia / Especie: Guarea guidonia (L.) Sleumer / Familia: MELIACEAE
+Nombre local: romerillo / Especie: Podocarpus oleifolius D. Don / Familia: PODOCARPACEAE
+Nombre local: romerillo hembra / Especie: Prumnopitys harmsiana (Pilg.) de Laub. / Familia: PODOCARPACEAE
+Nombre local: shihuahuaco / Especie: Dipteryx micrantha Harms / Familia: FABACEAE
+Nombre local: shihuahuaco / Especie: Dipteryx odorata (Aubl.) Willd. / Familia: FABACEAE
+Nombre local: tahuarí, tahuarí amarillo / Especie: Handroanthus serratifolius (Vahl) S.O. Grose / Familia: BIGNONIACEAE
+Nombre local: tahuarí negro / Especie: Handroanthus chrysanthus (JACQ.) S.O. Grose / Familia: BIGNONIACEAE
+Nombre local: tornillo / Especie: Cedrelinga cateniformis (Ducke) Ducke / Familia: FABACEAE
+Nombre local: ubos / Especie: Spondias mombin L. / Familia: ANACARDIACEAE
+Nombre local: uña de gato / Especie: Uncaria tomentosa (Willd. ex Schult.) DC. / Familia: RUBIACEAE
+Nombre local: yarina / Especie: Phytelephas macrocarpa Ruiz & Pav. / Familia: ARECACEAE
+Nombre local: yashnal / Especie: Terminalia amazonia (J.F. Gmel.) Exell / Familia: COMBRETACEAE
+Nombre local: zapote / Especie: Quararibea cordata (Vis.) Vis. / Familia: MALVACEAE
+Nombre local: aguaje / Especie: Mauritia flexuosa L. f. / Familia: ARECACEAE
+Nombre local: chiringa, caucho / Especie: Hevea brasiliensis (Willd. ex A. Juss.) Müll. Arg. / Familia: EUPHORBIACEAE
+Nombre local: cumala / Especie: Virola surinamensis (Rol. ex Rottb.) Warb. / Familia: MYRISTICACEAE
+Nombre local: machimango / Especie: Eschweilera coriacea (A. DC.) S.A. Mori / Familia: LECYTHIDACEAE
+Nombre local: palo cruz / Especie: Brownea grandiceps Jacq. / Familia: FABACEAE
+Nombre local: pashaco / Especie: Schizolobium parahyba (Vell.) Blake / Familia: FABACEAE
+Nombre local: sangre de grado / Especie: Croton lechleri Müll. Arg. / Familia: EUPHORBIACEAE
+Nombre local: topa, balsa / Especie: Ochroma pyramidale (Cav. ex Lam.) Urb. / Familia: MALVACEAE
+Nombre local: huayruro / Especie: Ormosia amazonica Ducke / Familia: FABACEAE
